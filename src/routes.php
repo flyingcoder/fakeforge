@@ -1,5 +1,12 @@
-<?php 
+<?php
 
-Route::get('/fake-hooks/{hook_id}', function ($hook_id) {
-	echo $hook_id;
-})->where('hook_id', 'backend|frontend');
+use Illuminate\Support\Facades\Route;
+
+Route::any('hooks/{hook_id}', function ($hook_id) {
+
+    $output = shell_exec("sh sh/deploy/{$hook_id}-script.sh");
+
+    echo "<pre>$output</pre>";
+
+})->where('hook_id', 'backend|frontend')
+  ->middleware('web');

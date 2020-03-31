@@ -23,20 +23,20 @@ class FakeforgeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
+
         if ($this->app->runningInConsole()) {
             $this->commands([
-                FakeforgeCommand::class
+                FakeforgeInitCommand::class
             ]);
         }
-
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         $this->publishes([
                 __DIR__.'/config/fakeforge.php' => config_path('fakeforge.php'),
             ]);
 
         $this->publishes([
-                __DIR__.'/sh' => base_path('/sh'),
+                __DIR__.'/sh' => base_path('public/sh'),
             ]);
     }
 }
