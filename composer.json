@@ -1,0 +1,24 @@
+{
+    "name": "flyingcoder/fakeforge",
+    "description": "A dumb library to automate server deployment for laravel sites.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alvin",
+            "email": "aepacot2016@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "flyingcoder\\fakeforge\\FakeforgeServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Flyingcoder\\Fakeforge\\": "src/"
+        }
+    }
+}
