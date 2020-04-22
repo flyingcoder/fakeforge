@@ -50,8 +50,8 @@ class FakeforgeInitCommand extends Command
         $cmd[] = "# redirect stdout/stderr to a file";
         $cmd[] = '#exec > '.config("fakeforge.path.{$hook}").'/output.log 2>&1';
         $cmd[] = "cd ".config("fakeforge.path.{$hook}");
-        $cmd[] = "git stash";
-        $cmd[] = "git pull origin master &";
+        $cmd[] = "git fetch --all";
+        $cmd[] = 'git checkout --force "origin/master"';
         $cmd[] = "wait";
 
         if($hook == 'backend') {
